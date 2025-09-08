@@ -24,8 +24,12 @@
               {
                 "glob": "**/*",
                 "input": "public"
+<<<<<<< HEAD
               },
               "src/assets"
+=======
+              }
+>>>>>>> 41632da (initial commit)
             ],
             "styles": [
               "src/styles.css"
@@ -96,9 +100,16 @@
   },
   "cli": {
 <<<<<<< HEAD
+<<<<<<< HEAD
     "analytics": "9c655229-208c-4b07-ab42-a2a693ba22fc"
 =======
     "analytics": false
 >>>>>>> b36dc38 (Initial Commit)
+=======
+    "analytics": false
+=======
+    "analytics": "9c655229-208c-4b07-ab42-a2a693ba22fc"
+>>>>>>> 41632da (initial commit)
+>>>>>>> e30057c (initial commit)
   }
 }

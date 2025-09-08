@@ -1,4 +1,5 @@
 import { Routes } from '@angular/router';
+<<<<<<< HEAD
 import { HomeComponent } from './Pages/home/home.component';
 import { DetailsComponent } from './Pages/details/details.component';
 import { NotFoundComponent } from './Pages/not-found/not-found.component';
@@ -17,3 +18,7 @@ export const routes: Routes = [
         component: NotFoundComponent
     }
 ];
+=======
+
+export const routes: Routes = [];
+>>>>>>> 41632da (initial commit)
