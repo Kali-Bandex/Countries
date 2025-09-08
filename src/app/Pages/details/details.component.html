@@ -1,0 +1,134 @@
+@if(isLoading()){
+<div class="flex justify-center items-center min-h-[200px]">
+  <svg
+    class="animate-spin h-10 w-10 text-[#35af00]"
+    xmlns="http://www.w3.org/2000/svg"
+    fill="none"
+    viewBox="0 0 24 24"
+  >
+    <circle
+      class="opacity-25"
+      cx="12"
+      cy="12"
+      r="10"
+      stroke="currentColor"
+      stroke-width="4"
+    ></circle>
+    <path
+      class="opacity-75"
+      fill="currentColor"
+      d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z"
+    ></path>
+  </svg>
+</div>
+}@else if (error()) {
+<p>{{error()}}</p>
+}@else {
+<section class="py-16 overflow-auto">
+  <button
+    class="bg-white dark:bg-gray-800 text-gray-800 dark:text-white rounded-xl px-8 py-3 flex items-center gap-2 cursor-pointer"
+    (click)="goToBack()"
+  >
+    <!-- <img [src]="imageUrl()" alt="back-arrow" /> -->
+    <span class="material-symbols-outlined text-gray-800 dark:text-white">
+      keyboard_backspace
+    </span>
+    <span>Back</span>
+  </button>
+  <div
+    class="mt-20 w-full flex md:items-start flex-col md:flex-row gap-11 md:gap-48"
+  >
+    <div
+      class="bg-white dark:bg-gray-800 w-full aspect-[4/3] md:flex-1 md:h-[400px] rounded-xl overflow-hidden relative"
+    >
+      <img
+        [src]="country()?.flags?.svg"
+        [alt]="country()?.flags?.alt || country()?.name?.common + ' flag'"
+        class="absolute inset-0 w-full h-full object-cover object-center"
+      />
+    </div>
+    <div class="flex-1 w-full">
+      <h3 class="text-3xl/7 tracking-tighter mb-6 font-semibold">
+        {{ country()?.name?.common }}
+      </h3>
+      <!-- Details info section -->
+      <div class="w-full flex items-start flex-col md:flex-row justify-between">
+        <div class="flex flex-col gap-2">
+          <div class="flex items-center gap-2 text-base/7 tracking-tighter">
+            <p class="">Native Name:</p>
+            <span class="text-gray-700/70 dark:text-gray-50/70">{{
+              country()?.name?.common
+            }}</span>
+          </div>
+          <div class="flex items-center gap-2 text-base/7 tracking-tighter">
+            <p class="">Population:</p>
+            <span class="text-gray-700/70 dark:text-gray-50/70">{{
+              country()?.population | number
+            }}</span>
+          </div>
+          <div class="flex items-center gap-2 text-base/7 tracking-tighter">
+            <p class="">Region:</p>
+            <span class="text-gray-700/70 dark:text-gray-50/70">{{
+              country()?.region
+            }}</span>
+          </div>
+          <div class="flex items-center gap-2 text-base/7 tracking-tighter">
+            <p class="">Sub Region:</p>
+            <span class="text-gray-700/70 dark:text-gray-50/70">{{
+              country()?.subregion
+            }}</span>
+          </div>
+          <div class="flex items-center gap-2 text-base/7 tracking-tighter">
+            <p class="">Capital:</p>
+            <span class="text-gray-700/70 dark:text-gray-50/70">{{
+              country()?.capital?.join(", ")
+            }}</span>
+          </div>
+        </div>
+        <div>
+          <div class="flex items-center gap-2 text-base/7 tracking-tighter">
+            <p class="">Top Level Domain:</p>
+            <span class="text-gray-700/70 dark:text-gray-50/70">{{
+              country()?.tld?.join(", ")
+            }}</span>
+          </div>
+          <div class="flex items-center gap-2 text-base/7 tracking-tighter">
+            <p class="">Currencies:</p>
+            @for (currency of Object.values(country()?.currencies || {}); track
+            $index) {
+            <span class="text-gray-700/70 dark:text-gray-50/70">
+              {{ currency.name }} ({{ currency.symbol }})
+            </span>
+            }
+          </div>
+          <div class="flex items-center gap-2 text-base/7 tracking-tighter">
+            <p class="">Languages:</p>
+            @for (language of Object.values(country()?.languages || {}); track
+            $index) {
+            <span class="text-gray-700/70 dark:text-gray-50/70">
+              {{ language }}
+            </span>
+            }
+          </div>
+        </div>
+      </div>
+
+      <!-- Border section -->
+      @if(borders().length){
+      <div class="mt-16 tracking-tighter flex items-center gap-3 flex-wrap">
+        <p>Border Countries:</p>
+        @for(border of borders(); track $index){
+        <button
+          class="bg-white dark:bg-gray-800 px-7 py-2 text-[13px]"
+          (click)="navigateToDetail(border.cca3)"
+        >
+          {{ border.name.common }}
+        </button>
+        }
+      </div>
+      }
+    </div>
+  </div>
+</section>
+
+}
