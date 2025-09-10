@@ -25,11 +25,16 @@
                 "glob": "**/*",
                 "input": "public"
 <<<<<<< HEAD
+<<<<<<< HEAD
               },
               "src/assets"
 =======
               }
 >>>>>>> 41632da (initial commit)
+=======
+              },
+              "src/assets"
+>>>>>>> 065d09a (Initial Commit)
             ],
             "styles": [
               "src/styles.css"
@@ -101,15 +106,27 @@
   "cli": {
 <<<<<<< HEAD
 <<<<<<< HEAD
+<<<<<<< HEAD
     "analytics": "9c655229-208c-4b07-ab42-a2a693ba22fc"
 =======
     "analytics": false
 >>>>>>> b36dc38 (Initial Commit)
 =======
+=======
+>>>>>>> ad153f7 (Initial Commit)
     "analytics": false
 =======
     "analytics": "9c655229-208c-4b07-ab42-a2a693ba22fc"
 >>>>>>> 41632da (initial commit)
+<<<<<<< HEAD
 >>>>>>> e30057c (initial commit)
+=======
+=======
+    "analytics": "9c655229-208c-4b07-ab42-a2a693ba22fc"
+=======
+    "analytics": false
+>>>>>>> b36dc38 (Initial Commit)
+>>>>>>> 065d09a (Initial Commit)
+>>>>>>> ad153f7 (Initial Commit)
   }
 }

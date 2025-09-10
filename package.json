@@ -18,9 +18,13 @@
     "@angular/platform-browser-dynamic": "^19.2.0",
     "@angular/router": "^19.2.0",
 <<<<<<< HEAD
+<<<<<<< HEAD
     "@tailwindcss/postcss": "^4.1.13",
 =======
 >>>>>>> 41632da (initial commit)
+=======
+    "@tailwindcss/postcss": "^4.1.13",
+>>>>>>> 065d09a (Initial Commit)
     "rxjs": "~7.8.0",
     "tailwindcss": "^4.1.13",
     "tslib": "^2.3.0",

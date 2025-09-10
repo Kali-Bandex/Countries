@@ -27,7 +27,15 @@ export class HomeComponent implements OnInit{
       const matchesSearch = c.name.common.toLowerCase().includes(this.searchInput().toLowerCase());
       const matchesRegion = this.region() ? c.region === this.region() : true;
       return matchesSearch && matchesRegion;
+<<<<<<< HEAD
     }).sort((a, b) => a.name.common.localeCompare(b.name.common));
+=======
+<<<<<<< HEAD
+    })
+=======
+    }).sort((a, b) => a.name.common.localeCompare(b.name.common));
+>>>>>>> 065d09a (Initial Commit)
+>>>>>>> ad153f7 (Initial Commit)
   })
 
   ngOnInit(): void {

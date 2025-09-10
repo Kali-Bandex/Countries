@@ -34,6 +34,12 @@ export class DetailsComponent implements OnInit {
   ) {}
 
   ngOnInit(): void {
+<<<<<<< HEAD
+=======
+<<<<<<< HEAD
+    const countryCode = this.route.snapshot.paramMap.get('countryId')!;
+=======
+>>>>>>> ad153f7 (Initial Commit)
     this.route.params.subscribe(params => {
       const countryCode = params['countryId'];
 
@@ -44,13 +50,25 @@ export class DetailsComponent implements OnInit {
   }
   
   fetchCountry(countryCode: string){
+<<<<<<< HEAD
+=======
+>>>>>>> 065d09a (Initial Commit)
+>>>>>>> ad153f7 (Initial Commit)
 
     this.isLoading.set(true);
     this.countryService.getCountryByCode(countryCode).subscribe({
       next: (countryData) => {
         this.country.set(countryData);
         this.isLoading.set(false);
+<<<<<<< HEAD
   
+=======
+<<<<<<< HEAD
+
+=======
+  
+>>>>>>> 065d09a (Initial Commit)
+>>>>>>> ad153f7 (Initial Commit)
         if (countryData.borders?.length) {
           this.countryService
             .getCountriesByCodes(countryData.borders)
@@ -73,7 +91,14 @@ export class DetailsComponent implements OnInit {
         this.isLoading.set(false);
       },
     });
+<<<<<<< HEAD
     
+=======
+<<<<<<< HEAD
+=======
+    
+>>>>>>> 065d09a (Initial Commit)
+>>>>>>> ad153f7 (Initial Commit)
   }
 
   goToBack() {
@@ -81,6 +106,18 @@ export class DetailsComponent implements OnInit {
   }
 
   navigateToDetail(code: string) {
+<<<<<<< HEAD
      this.router.navigate(['/detail', code]);
+=======
+<<<<<<< HEAD
+    console.log('Navigating to:', code);
+    this.router.navigate(['/detail', code]).then(() => {
+      // Force a reload of the component
+      window.location.reload();
+    });
+=======
+     this.router.navigate(['/detail', code]);
+>>>>>>> 065d09a (Initial Commit)
+>>>>>>> ad153f7 (Initial Commit)
   }
 }
