@@ -1,0 +1,86 @@
+import { Component, OnInit, signal } from '@angular/core';
+import { ActivatedRoute } from '@angular/router';
+import { CountriesService } from '../../Services/countries.service';
+import { CountryDetails } from '../../Interfaces/country-details';
+import { DecimalPipe } from '@angular/common';
+import { Location, CommonModule } from '@angular/common';
+import { Router } from '@angular/router';
+
+@Component({
+  selector: 'app-details',
+  standalone: true,
+  imports: [CommonModule, DecimalPipe],
+  templateUrl: './details.component.html',
+  styleUrl: './details.component.css',
+})
+export class DetailsComponent implements OnInit {
+
+  Object = Object;
+  country = signal<CountryDetails | null>(null);
+  borders = signal<CountryDetails[]>([]);
+  isLoading = signal<boolean>(false);
+  error = signal<string>('');
+  imageUrl = signal<string>('assets/call-made.svg');
+
+  // navigateToDetail(countryCode: string) {
+  //   this.router.navigate(['/detail', countryCode]);
+  // }
+
+  constructor(
+    private route: ActivatedRoute,
+    private countryService: CountriesService,
+    private location: Location,
+    private router: Router
+  ) {}
+
+  ngOnInit(): void {
+    this.route.params.subscribe(params => {
+      const countryCode = params['countryId'];
+
+      if(countryCode){
+        this.fetchCountry(countryCode)
+      }
+    })
+  }
+  
+  fetchCountry(countryCode: string){
+
+    this.isLoading.set(true);
+    this.countryService.getCountryByCode(countryCode).subscribe({
+      next: (countryData) => {
+        this.country.set(countryData);
+        this.isLoading.set(false);
+  
+        if (countryData.borders?.length) {
+          this.countryService
+            .getCountriesByCodes(countryData.borders)
+            .subscribe({
+              next: (borderCountries) => {
+                console.log('Border countries:', borderCountries);
+                this.borders.set(borderCountries);
+              },
+              error: (err) => {
+                console.error('Error fetching border countries:', err);
+                this.borders.set([]);
+              },
+            });
+        } else {
+          this.borders.set([]);
+        }
+      },
+      error: (err) => {
+        this.error.set(err || 'Something Went Wrong!');
+        this.isLoading.set(false);
+      },
+    });
+    
+  }
+
+  goToBack() {
+    this.location.back();
+  }
+
+  navigateToDetail(code: string) {
+     this.router.navigate(['/detail', code]);
+  }
+}

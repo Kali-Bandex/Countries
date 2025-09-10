@@ -1,1 +1,27 @@
-/* You can add global styles to this file, and also import other style files */
+@import "tailwindcss";
+
+@theme {
+  --color-bg: #FAFAFA;
+  --color-text: #111827;
+  --color-sec: #FFFFFF;
+  --color-textSm: #808080;
+}
+
+/* Dark overrides */
+[data-theme="dark"] {
+  --color-bg: #202C36;
+  --color-text: #ffffff;
+  --color-sec: #2B3844;
+  --color-textSm: #f9fafb;;
+}
+
+
+
+body{
+    font-family: 'poppins';
+    background-color: var(--color-bg);
+}
+
+h1,h2,h3,h4{
+    font-weight: 400;
+}

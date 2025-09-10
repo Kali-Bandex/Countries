@@ -24,7 +24,8 @@
               {
                 "glob": "**/*",
                 "input": "public"
-              }
+              },
+              "src/assets"
             ],
             "styles": [
               "src/styles.css"
@@ -94,6 +95,10 @@
     }
   },
   "cli": {
+<<<<<<< HEAD
     "analytics": "9c655229-208c-4b07-ab42-a2a693ba22fc"
+=======
+    "analytics": false
+>>>>>>> b36dc38 (Initial Commit)
   }
 }
